@@ -1,9 +1,12 @@
 <template>
-  <ta-page :color="'tertiary'">
+  <ta-page :color="'tertiary'" class="ta-main">
     <template v-slot:title>Twitch Alert</template>
     <template v-slot:content>
-      <router-link to="search">Home</router-link>
-      <ion-button color="tertiary" expand="block" class="ion-margin-top">Buscar cuenta de Twitch</ion-button>
+        
+      <router-link class="ta-main--search" to="search">
+          <ion-button color="tertiary" class="ion-margin" expand="block">Buscar cuenta de Twitch</ion-button>
+      </router-link>
+      
     </template>
   </ta-page>
 </template>
@@ -18,5 +21,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+
+    .ta-main {
+        .ta-main--search {
+            text-decoration: none;
+        }
+    }
 </style>

@@ -7,7 +7,7 @@
         </ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content fulscreen>
+    <ion-content class="page--content">
       <slot name="content"></slot>
     </ion-content>
   </div>
@@ -21,5 +21,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+
+    .page--content {
+        height: 100vh;
+    }
+    
 </style>
