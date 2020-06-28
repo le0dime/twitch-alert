@@ -2,6 +2,11 @@
   <div>
     <ion-header>
       <ion-toolbar :color="color">
+        <ion-buttons v-if="hasHistory && !currentRouteIsMain" slot="start">
+            <ion-button @click="goBack">
+                <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
         <ion-title>
             <slot name="title"></slot>
         </ion-title>
@@ -16,7 +21,27 @@
 <script>
 export default {
     props: {
-        color: String
+        color: String,
+        enableBackButton: {
+            type: Boolean,
+            default: true
+        },
+        previousPage: String
+    },
+
+    computed: {
+        currentRouteIsMain() {
+            return this.$route.name == 'main';
+        },
+        hasHistory() {
+            return window.history.length > 2;
+        }
+    },
+
+    methods: {
+        goBack() {
+            return this.$router.go(-1);
+        }
     }
 };
 </script>
@@ -25,6 +50,10 @@ export default {
 
     .page--content {
         height: 100vh;
+    }
+
+    .button-back {
+        color: white;
     }
     
 </style>

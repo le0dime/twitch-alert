@@ -4,7 +4,7 @@
     <template v-slot:content>
         
       <router-link class="ta-main--search" to="search">
-          <ion-button color="tertiary" class="ion-margin" expand="block">Buscar cuenta de Twitch</ion-button>
+          <ion-button color="tertiary" class="ion-margin" expand="block">Buscar canal de Twitch</ion-button>
       </router-link>
       
     </template>

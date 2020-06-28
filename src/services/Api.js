@@ -1,16 +1,33 @@
-import Axios from "axios";
-
 import axios from 'axios';
 
-export const api = {
+export class Api {
 
-    get(url, params = {}) {
+    constructor(baseURL, headers = {}, timeout = 10000) {
+        let instance = axios.create({
+            baseURL,
+            timeout,
+            headers
+        });
+        instance.interceptors.response.use(this.handleSuccess, this.handleError);
 
-        return axios.get(url, params);
-    },
+        this.instance = instance;
+    }
+
+    handleSuccess(response) {
+        return response.data;
+    }
+
+    handleError(error){
+        return Promise.reject(error);
+    }
+
+    get(url, data = {}) {
+
+        return this.instance.get(url, {params: data});
+    }
 
     post(url, data = {}) {
 
-        return axios.post(url, data);
+        return this.instance.post(url, data);
     }
 }
